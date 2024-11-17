@@ -8,6 +8,19 @@ public class Mapa {
 
     }
 
+    public Mapa(List<Ponto> pontos, List<Caminho> caminhos) {
+        this.pontos = pontos;
+        this.caminhos = caminhos;
+    }
+
+    public List<Ponto> getPontos() {
+        return pontos;
+    }
+
+    public List<Caminho> getCaminhos() {
+        return caminhos;
+    }
+
     public void adicionarPonto(Ponto ponto){
         pontos.add(ponto);
     }

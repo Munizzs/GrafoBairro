@@ -1,6 +1,9 @@
+import java.util.Scanner;
+
 public class App {
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         Mapa mapa = new Mapa();
 
         Ponto pontoA = new Ponto("A");
@@ -81,6 +84,28 @@ public class App {
         //mapa.MostrarPontos();
         //mapa.MostrarCaminhos();
 
-        mapa.encontrarCaminhoCurto(pontoR, pontoV);
+        System.out.println("Digite o ponto de origem (ex: A):");
+        String origemNome = sc.nextLine().toUpperCase();
+
+        System.out.println("Digite o ponto de destino (ex: B):");
+        String destinoNome = sc.nextLine().toUpperCase();
+
+        Ponto origem = null, destino = null;
+
+        for (Ponto ponto : mapa.getPontos()) {
+            if (ponto.getNome().equals(origemNome)) {
+                origem = ponto;
+            }
+            if (ponto.getNome().equals(destinoNome)) {
+                destino = ponto;
+            }
+        }
+
+        if (origem == null || destino == null) {
+            System.out.println("Erro: Ponto de origem ou destino inválido.");
+        } else {
+            mapa.encontrarCaminhoCurto(origem, destino);
+        }
+
     }
 }
